@@ -1,0 +1,46 @@
+[
+  {
+    "id": 0,
+    "nome": "teste",
+    "cpf": "123.456.789-00",
+    "rg": "12.345.678-9",
+    "conta_bancaria": "2342342342",
+    "endereco": "a",
+    "funcao": "agente especial lider",
+    "vinculo": "Reserva",
+    "tipo": "Agente Especiais"
+  },
+  {
+    "id": 1,
+    "nome": "a",
+    "cpf": "21414312",
+    "rg": "234242",
+    "conta_bancaria": "12345-6",
+    "endereco": "Rua das , 123",
+    "funcao": "agente especial lider",
+    "vinculo": "Titular",
+    "tipo": "Agente Especiais"
+  },
+  {
+    "id": 1760933816594,
+    "nome": "raphael",
+    "cpf": "1",
+    "rg": "1",
+    "conta_bancaria": "1",
+    "endereco": "1",
+    "funcao": "agente especial lider",
+    "vinculo": "Titular",
+    "tipo": "Bombeiro"
+  },
+  {
+    "id": 1760936230194,
+    "nome": "a",
+    "cpf": "a",
+    "rg": "a",
+    "conta_bancaria": "a",
+    "endereco": "Rua das Flores, 123",
+    "funcao": "soldado - socorrista",
+    "vinculo": "Titular",
+    "tipo": "Bombeiro"
+  }
+]

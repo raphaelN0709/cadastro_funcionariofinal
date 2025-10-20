@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerenciamento de Funcionários (Admin)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    form { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+    label { display: flex; flex-direction: column; }
+    input, select { padding: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Gerenciamento de Funcionários (Admin)</h1>
+  
+  <form id="employeeForm">
+    <input type="hidden" id="employeeId" />
+    <label>Nome completo: <input type="text" id="nome" required /></label>
+    <label>CPF: <input type="text" id="cpf" required /></label>
+    <label>RG: <input type="text" id="rg" required /></label>
+    <label>Conta Bancária: <input type="text" id="conta_bancaria" required /></label>
+    <label>Endereço: <input type="text" id="endereco" required /></label>
+    <label>Função: <input type="text" id="funcao" required /></label>
+    <label>Vínculo:
+      <select id="vinculo" required>
+        <option value="Titular">Titular</option>
+        <option value="Reserva">Reserva</option>
+        <option value="Eventual">Eventual</option>
+      </select>
+    </label>
+    <label>Posto:
+      <select id="tipo" required>
+        <option value="Bombeiro">Bombeiro</option>
+        <option value="Limpeza">Limpeza</option>
+        <option value="Agente Especiais">Agente Especiais</option>
+        <option value="Portaria">Portaria</option>
+      </select>
+    </label>
+    <button type="submit">Salvar</button>
+    <button type="button" onclick="clearForm()">Limpar</button>
+  </form>
+
+  <table id="employeeTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>RG</th>
+        <th>Conta Bancária</th>
+        <th>Endereço</th>
+        <th>Função</th>
+        <th>Vínculo</th>
+        <th>Posto</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="admin.js">
+  </script>
+</body>
+</html>

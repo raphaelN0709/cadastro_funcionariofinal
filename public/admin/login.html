@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <label>Usuário: <input type="text" id="user" required placeholder="digite o usuário:"></label><br>
+    <label>Senha: <input type="password" id="senha" required placeholder="digite a senha:"></label><br>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const user = document.getElementById('user').value;
+      const senha = document.getElementById('senha').value;
+
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user, senha })
+      });
+
+      if (response.ok) {
+        window.location.href = '/admin/painel';
+      } else {
+        alert('Usuário ou senha inválidos');
+      }
+    });
+  </script>
+</body>
+</html>
