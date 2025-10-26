@@ -3,18 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <title>Gerenciamento de Funcionários (Admin)</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-    form { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
-    label { display: flex; flex-direction: column; }
-    input, select { padding: 6px; }
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2 {
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+    button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    thead {
+      background-color: #007bff;
+      color: #fff;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    #expiringCertificates {
+      font-weight: bold;
+      color: red;
+    }
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { margin-bottom: 15px; border: 1px solid #ccc; padding: 10px; border-radius: 8px; }
+      td { padding-left: 50%; position: relative; border: none; text-align: left; }
+      td:before { position: absolute; top: 12px; left: 15px; width: 45%; font-weight: bold; content: attr(data-label); }
+    }
   </style>
 </head>
 <body>
   <h1>Gerenciamento de Funcionários (Admin)</h1>
   
+  <div style="margin-bottom: 20px;">
+    <label>Buscar por Nome: <input type="text" id="searchName" onkeyup="filterEmployees()" placeholder="Digite o nome..." /></label>
+  </div>
+
   <form id="employeeForm">
     <input type="hidden" id="employeeId" />
     <label>Nome completo: <input type="text" id="nome" required /></label>
@@ -30,6 +93,7 @@
         <option value="Eventual">Eventual</option>
       </select>
     </label>
+    <label>Data de Validade do Certificado: <input type="date" id="data_validade_certificado" /></label>
     <label>Posto:
       <select id="tipo" required>
         <option value="Bombeiro">Bombeiro</option>
@@ -42,6 +106,9 @@
     <button type="button" onclick="clearForm()">Limpar</button>
   </form>
 
+  <h2>Certificados Próximos do Vencimento</h2>
+  <div id="expiringCertificates" style="margin-bottom: 20px; color: red;">Nenhum certificado próximo do vencimento.</div>
+
   <table id="employeeTable">
     <thead>
       <tr>
@@ -53,6 +120,7 @@
         <th>Endereço</th>
         <th>Função</th>
         <th>Vínculo</th>
+        <th>Data Validade Certificado</th>
         <th>Posto</th>
         <th>Ações</th>
       </tr>

@@ -11,7 +11,8 @@ const API_URL = '/api/employees';
       endereco: document.getElementById('endereco').value,
       funcao: document.getElementById('funcao').value,
       vinculo: document.getElementById('vinculo').value,
-      tipo: document.getElementById('tipo').value
+      tipo: document.getElementById('tipo').value,
+      data_validade_certificado: document.getElementById('data_validade_certificado').value
       };
       const response = await fetch(API_URL, {
         method: 'POST',
@@ -23,6 +24,6 @@ const API_URL = '/api/employees';
         form.reset();
       } else {
          const erro = await response.json();
-        alert('Erro ao cadastrar.');
+        alert('Erro: ' + (erro.error || 'Erro desconhecido.'));
       }
     });
